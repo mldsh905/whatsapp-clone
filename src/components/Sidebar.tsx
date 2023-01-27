@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Avatar, Button, IconButton} from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -14,6 +14,8 @@ const Sidebar = () => {
     const userChatRef = db.collection('chats').where('users', 'array-contains', user?.email)
     const [chatsSnapshot]:any = useCollection(userChatRef as any);
     // console.log('sidebar',user.photoURL)
+    useEffect(()=>{window.location.reload()},[])
+
 
     const chatAlreadyExists = (email:string) => {
         return !!chatsSnapshot?.docs.find(

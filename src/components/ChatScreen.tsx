@@ -50,7 +50,6 @@ const ChatScreen = ({chat, messages}: any) => {
         // }
     }
     useEffect(()=>{scrollToBottom()},[showMessages])
-    useEffect(()=>{window.location.reload()},[])
 
 
     const endOfMessagesRef = useRef<null | HTMLDivElement>(null);
