@@ -14,7 +14,7 @@ const Sidebar = () => {
     const userChatRef = db.collection('chats').where('users', 'array-contains', user?.email)
     const [chatsSnapshot]:any = useCollection(userChatRef as any);
     // console.log('sidebar',user.photoURL)
-    useEffect(()=>{window.location.reload()},[])
+    // useEffect(()=>{window.location.reload()},[])
 
 
     const chatAlreadyExists = (email:string) => {

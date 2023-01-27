@@ -18,7 +18,7 @@ const ChatScreen = ({chat, messages}: any) => {
     const [input, setInput] = useState('');
     const router: any = useRouter();
 
-    const email = chat?.users?.filter((e: string) => e !== user?.email) || 'null';
+    const email = chat?.users?.filter((e: string) => e !== user?.email);
     // console.log(email)
     // console.log(router.query.id)
     const [messagesSnapshot] = useCollection(db.collection('chats').doc(router.query.id).collection('message').orderBy('timestamp', 'asc') as any);
