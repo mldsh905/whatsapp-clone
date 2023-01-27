@@ -1,15 +1,10 @@
 import Head from 'next/head'
 import {Inter} from '@next/font/google'
 import Sidebar from "@/components/Sidebar";
-import ChatScreen from "@/components/ChatScreen";
-import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "../../firebase.config";
-import Loading from "@/components/Loading";
 
 const inter = Inter({subsets: ['latin']})
 
 export default function Home() {
-    const [user] = useAuthState(auth as any);
 
     return (
         <div className='flex'>
