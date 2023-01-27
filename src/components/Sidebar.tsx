@@ -8,6 +8,7 @@ import {auth, db} from "../../firebase.config";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {useCollection} from "react-firebase-hooks/firestore";
 import Chat from "@/components/Chat";
+import Image from "next/image";
 
 const Sidebar = () => {
     const [user] = useAuthState(auth as any);
@@ -15,7 +16,7 @@ const Sidebar = () => {
     const [chatsSnapshot]:any = useCollection(userChatRef as any);
     // console.log('sidebar',user.photoURL)
     // useEffect(()=>{window.location.reload()},[])
-
+    // console.log(chatsSnapshot.docs[1].data())
 
     const chatAlreadyExists = (email:string) => {
         return !!chatsSnapshot?.docs.find(
@@ -53,7 +54,7 @@ const Sidebar = () => {
                         }
                     }}
                 >
-                    <img className='h-8 w-8 rounded-full cursor-pointer' src={user?.photoURL as string || '/whatsapp.jpg'} alt='user'/>
+                    <Image width={40} height={40} className='h-8 w-8 rounded-full cursor-pointer' src={user?.photoURL as string || '/whatsapp.jpg'} alt='user'/>
                     <span className='hidden md:inline-block cursor-pointer text-sm text-gray-500'>Log out</span>
                 </div>
 

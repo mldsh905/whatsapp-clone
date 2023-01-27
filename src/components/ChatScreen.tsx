@@ -12,6 +12,7 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import moment from 'moment';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import Image from "next/image";
 
 const ChatScreen = ({chat, messages}: any) => {
     const [user] = useAuthState(auth as any);
@@ -76,7 +77,7 @@ const ChatScreen = ({chat, messages}: any) => {
                 className='h-[10vh] px-4 sticky flex justify-between items-center bg-gray-100 shadow-md shadow-gray-200'>
                 <div className='flex items-center gap-3'>
                     {recipientSnapshot?.docs.length ? (
-                        <img className='rounded-full w-[40px] h-[40px]' src={recipient?.photoURL} alt="photo"/>
+                        <Image width={40} height={40} className='rounded-full w-[40px] h-[40px]' src={recipient?.photoURL} alt="photo"/>
                     ) : (
                         <Avatar/>
                     )}

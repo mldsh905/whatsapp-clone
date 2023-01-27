@@ -4,6 +4,7 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import {auth, db} from "../../firebase.config";
 import {useCollection} from "react-firebase-hooks/firestore";
 import {useRouter} from "next/router";
+import Image from "next/image";
 
 
 
@@ -14,6 +15,8 @@ const Chat = ({id, users}:{id:string, users:string[]}) => {
     // console.log(friend[0]);
     const [recipientSnapshot] = useCollection(db.collection('users').where('email', '==', friend[0]) as any)
     const photo = recipientSnapshot?.docs[0]?.data().photoURL;
+    // console.log(recipientSnapshot);
+
     const router = useRouter();
     const focus = id !== router.asPath.split('/')[2]?
         'flex  cursor-pointer hover:bg-gray-200 pt-1 px-2 py-2 gap-2 items-center border-b-2':
@@ -25,7 +28,7 @@ const Chat = ({id, users}:{id:string, users:string[]}) => {
     return (
         <div onClick={enterChat} className={focus}>
             {photo?(
-                <img className='hidden md:block rounded-full w-[30px] h-[30px]' src={recipientSnapshot?.docs?.[0].data().photoURL || '/whatsapp.jpg'} alt=""/>
+                <Image width={30} height={30} className='hidden md:block rounded-full w-[30px] h-[30px]' src={recipientSnapshot?.docs?.[0].data().photoURL || '/whatsapp.jpg'} alt=""/>
             ):(
                 <div className='hidden md:block'>
                     <Avatar className='cursor-pointer' sx={{width:'30px', height:'30px'}}/>

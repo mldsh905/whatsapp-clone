@@ -21,7 +21,7 @@ export default function App({Component, pageProps}: AppProps) {
                 photoURL: user.photoURL
             }, {merge: true})
         }
-    }, [])
+    }, [user])
 
     if (loading) return <Loading/>
     if (!user) return <Login/>
