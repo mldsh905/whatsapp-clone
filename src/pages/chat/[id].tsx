@@ -31,7 +31,7 @@ export async function getServerSideProps(context: any) {
         .collection('message')
         .orderBy('timestamp', 'asc')
         .get();
-    console.log(messagesRes)
+    // console.log(messagesRes)
     const message = messagesRes.docs.map((doc:any)=>({
         id:doc.id,
         ...doc.data()
