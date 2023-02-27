@@ -1,7 +1,6 @@
 ## Introduction
 
 WhatsApp Clone is a messaging app that allows you to chat with your friends and family in real-time, just like WhatsApp.
-This app is built using React Native, Firebase, and Gifted Chat.
 
 ## Screenshot
 
@@ -28,3 +27,5 @@ To install WhatsApp Clone, follow these steps:
 * Add friends via their Gmail and start chatting
 * See the time that your friend last active
 
+## Contributing
+We welcome contributions from the community.
