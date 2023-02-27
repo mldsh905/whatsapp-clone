@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import {Inter} from '@next/font/google'
 import Sidebar from "@/components/Sidebar";
+import ChatScreen from "@/components/ChatScreen";
+import React from "react";
+import {db} from "../../firebase.config";
 
 const inter = Inter({subsets: ['latin']})
 
-export default function Home() {
+export default function Home({chat, messages}:any) {
 
     return (
         <div className='flex'>

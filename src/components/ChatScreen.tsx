@@ -14,15 +14,18 @@ import moment from 'moment';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import Image from "next/image";
 
+
+
 const ChatScreen = ({chat, messages}: any) => {
     const [user] = useAuthState(auth as any);
     const [input, setInput] = useState('');
     const router: any = useRouter();
-
+    // console.log(user,chat?.users)
     const email = chat?.users?.filter((e: string) => e !== user?.email);
+    // console.log(email);
     const [messagesSnapshot] = useCollection(db.collection('chats').doc(router.query.id).collection('message').orderBy('timestamp', 'asc') as any);
-
     const [recipientSnapshot] = useCollection(db.collection('users').where('email', '==', email[0]) as any)
+
 
     const showMessages = () => {
         if (messagesSnapshot) {
@@ -38,7 +41,9 @@ const ChatScreen = ({chat, messages}: any) => {
         //     // router.push('/index')
         // }
     }
-    useEffect(()=>{scrollToBottom()},[showMessages])
+    useEffect(() => {
+        scrollToBottom()
+    }, [showMessages])
 
 
     const endOfMessagesRef = useRef<null | HTMLDivElement>(null);
@@ -77,7 +82,8 @@ const ChatScreen = ({chat, messages}: any) => {
                 className='h-[10vh] px-4 sticky flex justify-between items-center bg-gray-100 shadow-md shadow-gray-200'>
                 <div className='flex items-center gap-3'>
                     {recipientSnapshot?.docs.length ? (
-                        <Image width={40} height={40} className='rounded-full w-[40px] h-[40px]' src={recipient?.photoURL} alt="photo"/>
+                        <Image width={40} height={40} className='rounded-full w-[40px] h-[40px]'
+                               src={recipient?.photoURL} alt="photo"/>
                     ) : (
                         <Avatar/>
                     )}
@@ -100,18 +106,18 @@ const ChatScreen = ({chat, messages}: any) => {
                 </div>
                 <div className='hidden md:flex gap-3'>
                     <div
-                        onClick={()=>{
-                            alert('User Instructions\n'+
+                        onClick={() => {
+                            alert('User Instructions\n' +
                                 '1. Please click "start a new chat" on left sidebar to add a friend \n' +
                                 '2. Fill in a Gmail address of your friend or just my email "yzcha28@gmail.com"\n' +
-                                '3. Leave your message\n'+
+                                '3. Leave your message\n' +
                                 '4. Ask your friend to login and reply'
                             )
                         }}
                         className='cursor-pointer flex justify-center items-center gap-2 mr-4'
                     >
                         <IconButton>
-                            <QuestionMarkIcon className='bg-gray-400 rounded-full' />
+                            <QuestionMarkIcon className='bg-gray-400 rounded-full'/>
                         </IconButton>
                         <span className=' text-gray-500'>Help</span>
                     </div>
@@ -124,7 +130,7 @@ const ChatScreen = ({chat, messages}: any) => {
 
             {/*messages*/}
             <div className='h-[82vh] overflow-auto w-auto'>
-                <div className='flex flex-col gap-3 p-2'  ref={endOfMessagesRef}>
+                <div className='flex flex-col gap-3 p-2' ref={endOfMessagesRef}>
                     {showMessages()}
                 </div>
             </div>
