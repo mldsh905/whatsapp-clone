@@ -1,17 +1,30 @@
 ## Introduction
 
-This application clones WhatsApp. You can log in via Google Oauth and chat alive. Once you logged in, you can add new
-friends through their gmail address and start chatting. Once your friends log in via their Google account, they can receive your message.
+WhatsApp Clone is a messaging app that allows you to chat with your friends and family in real-time, just like WhatsApp.
+This app is built using React Native, Firebase, and Gifted Chat.
+
+## Screenshot
+
+![](demo.png)
+
+## Try it online
 
 ```
-Give it a shot via:
 https://whatsapp-clone-six-psi.vercel.app/
 ```
 
+## Download and Installation
+
+To install WhatsApp Clone, follow these steps:
+
+1. Clone this repository
+2. Install dependencies using `npm install`
+3. Configure Firebase by following the instructions in the Firebase documentation
+4. Start the app using `npm start`
+
 ## Functions
 
-* Log in via Google (Oauth) and log out 
+* Log in via Google (Oauth) and log out
 * Add friends via their Gmail and start chatting
 * See the time that your friend last active
 
-![](demo.png)
